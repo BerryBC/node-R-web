@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		<%= titleUp %>
+	</title>
+	<link rel='stylesheet' href='stylesheets/style.css' />
+</head>
+
+<body>
+	<div id='divHead'>
+		<h1><a href="/">三世书首页</a></h1>
+	</div>
+	<div id='divIntro'>
+		<h1>
+			<%= titleH1 %>
+		</h1>
+		<p>
+			<%-introduction-%>
+		</p>
+	</div>
+	<div id='divTable'>
+		<table id='tableWKAnalysis' border="1" cellspacing="0" cellpadding="6">
+			<thead>
+				<tr>
+					<td>分析方法</td>
+					<td>选项</td>
+					<td>说明</td>
+					<td>数据例子(CSV文件)</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>整体特征<input type="radio" checked="checked" name="AT" value="wf" /></td>
+					<td>
+						<select id="selHclustMethod" name="wf" class="alternative">
+							<option value="two.sided">双侧检验</option>
+							<option value="less">右侧检验</option>
+							<option value="greater">左侧检验</option>
+							
+						</select>
+						<br><br>
+						置信度：<input type="text" id="txtWFCL" name="wf" class="CL" value="0.975" />
+					</td>
+					<td>均值、四分位、置信度等特征值</td>
+					<td><a href="./templateCSV/wf.csv">节日期间各网元业务量</a></td>
+				</tr>
+				<tr>
+					<td>线性回归<input type="radio" name="AT" value="lm" /></td>
+					<td>-</td>
+					<td>一个或多个自变量的线性回归<br>对于只有一个自变量才会出线型图哟</td>
+					<td><a href="./templateCSV/forLM_2d.csv">一个自变量的例子</a><br><a href="./templateCSV/forLM_4d.csv">多个自变量的例子</a></td>
+				</tr>
+				<tr>
+					<td>广义线性模型<input type="radio" name="AT" value="glm" /></td>
+					<td>
+						<select id="selGlm" name="glm" class="family">
+							<option value="binomial">二项式回归</option>
+							<option value="poisson">泊松回归</option>
+							<option value="gaussian">高斯回归</option>
+							<option value="Gamma">Gamma回归</option>
+						</select>
+					</td>
+					<td>泊松回归、二项式回归等</td>
+					<td><a href="./templateCSV/glm.csv">二项式回归确认关联指标</a></td>
+				</tr>
+				<tr>
+					<td>决策树<input type="radio" name="AT" value="ctree" /></td>
+					<td>-</td>
+					<td>生成决策树</td>
+					<td><a href="./templateCSV/ctree.csv">根据预测业务量及平日值确定需求容量</a></td>
+				</tr>
+				<tr>
+					<td>卡方检测<input type="radio" name="AT" value="chisq" /></td>
+					<td>-</td>
+					<td>对两列数据进行卡方检测</td>
+					<td><a href="./templateCSV/chisq.csv">拥塞是否与不同类型的热点场所有关分析</a></td>
+				</tr>
+				<tr>
+					<td>聚类分析<input type="radio" name="AT" value="hclust" /></td>
+					<td>
+						<select id="selHclustMethod" name="hclust" class="method">
+							<option value="ward.D2">离差平方和法</option>
+							<option value="ward.D">最小方差法</option>
+							<option value="single">最小距离法</option>
+							<option value="complete">最长距离法</option>
+							<option value="average">类平均法</option>
+							<option value="mcquitty">相似法</option>
+							<option value="median">中间距离法</option>
+							<option value="centroid">重心法</option>
+						</select>
+						<br><br>
+						聚类数：<input type="text" id="txtHclustK" name="hclust" class="k" value="5" />
+					</td>
+					<td>可选择不同的聚类方法以及聚类数</td>
+					<td><a href="./templateCSV/hclust.csv">不同热点的话务流量变动聚类</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<br><br>
+	</div>
+	<div id='divUploadCSV'>
+		<h3>上传文件</h3>
+		<input id="fileUpload" type="file">
+		<button id="btnUpload" type="button">上传</button>
+	</div>
+	<div id='divResult'>
+		<h3>结果</h3>
+		<textarea id='taResult'>
+
+		</textarea>
+		<div id='divOutputPic'></div>
+	</div>
+	<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="javascripts/index.js"></script>
+</body>
+
+</html>
