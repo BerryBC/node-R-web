@@ -14,7 +14,7 @@ funHC<-function(objPara){
 
 	num.k<-as.numeric(list.input$para$k)
 
-	png(file = list.input$dp, width=nrow(data.input)*20)
+	png(filename  = list.input$dp, width=nrow(data.input)*20)
 
 	plot(hc.data,hang=-1)
 	rh.data <- rect.hclust(hc.data, k = num.k)

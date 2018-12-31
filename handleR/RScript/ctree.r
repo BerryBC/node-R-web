@@ -20,7 +20,7 @@ funCTREE<-function(objPara){
 	int.tw=max(where(data.afct))
 
 
-	png(file = list.input$dp, width=int.tw*40)
+	png(filename  = list.input$dp, width=int.tw*40)
 	plot(data.afct)
 	dev.off()
 	data.output$pic<-1

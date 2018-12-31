@@ -14,7 +14,7 @@ funWF<-function(objPara){
 	print(t.test(data.input,conf.level =as.numeric(list.input$para$CL) ,alternative=list.input$para$alternative) )
 
 
-	png(file = list.input$dp)
+	png(filename  = list.input$dp)
 
 	hist(data.input,xlab = names(data.input.raw[1]),col = "purple",breaks = 10)
 
