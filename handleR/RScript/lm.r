@@ -1,4 +1,5 @@
 library("rjson")
+library("Cairo")
 funLM<-function(objPara){
 	list.input<-fromJSON(objPara)
 	data.input.raw <- read.csv(list.input$df)
@@ -18,7 +19,7 @@ funLM<-function(objPara){
 
 	# 如果是二维的
 	if (ncol(data.input)==2) {
-		png(filename  = list.input$dp)
+		CairoPNG(file  = list.input$dp)
 		plot(data.input[[2]],data.input[[1]],col = "purple",main = paste(names(data.input[1])," & ",names(data.input[2])," Regression"),
 abline(lm(data.input[[1]]~data.input[[2]])),cex = 1.3,pch=15,xlab = names(data.input[2]),ylab = names(data.input[1]))
 		dev.off()

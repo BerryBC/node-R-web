@@ -1,4 +1,5 @@
 library("rjson")
+library("Cairo")
 funHC<-function(objPara){
 	list.input<-fromJSON(objPara)
 	data.input.raw <- read.csv(list.input$df)
@@ -14,7 +15,7 @@ funHC<-function(objPara){
 
 	num.k<-as.numeric(list.input$para$k)
 
-	png(filename  = list.input$dp, width=nrow(data.input)*20)
+	CairoPNG(file  = list.input$dp, width=nrow(data.input)*20)
 
 	plot(hc.data,hang=-1)
 	rh.data <- rect.hclust(hc.data, k = num.k)

@@ -1,4 +1,5 @@
 library("rjson")
+library("Cairo")
 funWF<-function(objPara){	
 	list.input<-fromJSON(objPara)
 	data.input.raw <- read.csv(list.input$df)
@@ -14,7 +15,7 @@ funWF<-function(objPara){
 	print(t.test(data.input,conf.level =as.numeric(list.input$para$CL) ,alternative=list.input$para$alternative) )
 
 
-	png(filename  = list.input$dp)
+	CairoPNG(file  = list.input$dp)
 
 	hist(data.input,xlab = names(data.input.raw[1]),col = "purple",breaks = 10)
 

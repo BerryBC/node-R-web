@@ -1,5 +1,7 @@
 library("rjson")
 library("party")
+library("Cairo")
+
 funCTREE<-function(objPara){
 	list.input<-fromJSON(objPara)
 	data.input.raw <- read.csv(list.input$df)
@@ -20,7 +22,7 @@ funCTREE<-function(objPara){
 	int.tw=max(where(data.afct))
 
 
-	png(filename  = list.input$dp, width=int.tw*40)
+	CairoPNG(filename  = list.input$dp, width=int.tw*40)
 	plot(data.afct)
 	dev.off()
 	data.output$pic<-1
